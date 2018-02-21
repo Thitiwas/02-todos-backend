@@ -18,7 +18,7 @@ app.post('/post', (request, response) => {
       response.status(200).send(createdTodoObject);
   });
 })
-app.post('/put/:todoId', (request, response) => {
+app.put('/put/:todoId', (request, response) => {
   const Todo = require("../models/todo")
   Todo.findById(request.params.todoId, (err, todo) => {
     if (err) {
@@ -35,7 +35,7 @@ app.post('/put/:todoId', (request, response) => {
     }
   })
 })
-app.post('/delete/:todoId', (request, response) => {
+app.delete('/delete/:todoId', (request, response) => {
   console.log(request.params.todoId)
   Todo.findByIdAndRemove(request.params.todoId, (err, todo) => {
     let res = {
